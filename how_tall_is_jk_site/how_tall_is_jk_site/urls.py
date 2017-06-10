@@ -1,4 +1,4 @@
-"""how_tall_is_jk_site URL Configuration
+"""admintools URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
+from home_page import views as home_view
+
+
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-]
+    url(r'^$', home_view.index),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
